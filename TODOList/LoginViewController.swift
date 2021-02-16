@@ -9,15 +9,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    @IBAction func loginButtonClicked(_ sender: Any) {
+    @IBAction private func loginButtonClicked(_ sender: Any) {
         if validPassword(passwordTextField?.text) {
             presentToDoList()
         } else {
@@ -25,18 +25,18 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func validPassword(_ password: String?) -> Bool {
+    private func validPassword(_ password: String?) -> Bool {
         guard let password = password else { return false }
         return password == "1234"
     }
     
-    func presentToDoList() {
+    private func presentToDoList() {
         let viewController = self.storyboard?.instantiateViewController(identifier: "toDoList") as! ToDoListViewController
         viewController.modalPresentationStyle = .fullScreen
         self.present(viewController, animated: true, completion: nil)
     }
     
-    func presentAlert() {
+    private func presentAlert() {
         let alert = UIAlertController(title: "비밀번호 오류!",
                                       message: "정확한 비밀번호를 입력해 주세요.",
                                       preferredStyle: UIAlertController.Style.alert)
