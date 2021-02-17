@@ -11,8 +11,8 @@ var list = [TodoList]()
 
 class ToDoListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var addButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class ToDoListViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func saveAllData() {
+    private func saveAllData() {
         let data = list.map {
             [
                 "title": $0.title,  // $0 : 0번부터
@@ -42,7 +42,7 @@ class ToDoListViewController: UIViewController {
     }
     
     // userDefault 데이터 불러오기
-    func loadAllData() {
+    private func loadAllData() {
         let userDefaults = UserDefaults.standard
         guard let data = userDefaults.object(forKey: "items") as? [[String: AnyObject]] else {
             return

@@ -8,12 +8,12 @@
 import UIKit
 
 class AddListViewController: UIViewController {
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var summaryTextField: UITextField!
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var summaryTextField: UITextField!
     
-    var didAddHandler: ((TodoList)->Void)?
+    private var didAddHandler: ((TodoList)->Void)?
     
-    @IBAction func doneButtonClicked(_ sender: UIBarButtonItem) {
+    @IBAction private func doneButtonClicked(_ sender: UIBarButtonItem) {
         let title = titleTextField.text!
         let summary = summaryTextField.text ?? ""
         
