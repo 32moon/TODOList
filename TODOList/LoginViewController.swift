@@ -31,9 +31,11 @@ class LoginViewController: UIViewController {
     }
     
     private func presentToDoList() {
-        let viewController = self.storyboard?.instantiateViewController(identifier: "toDoList") as! ToDoListViewController
-        viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: true, completion: nil)
+        let viewController = self.storyboard?.instantiateViewController(identifier: "ToDoList") as! ToDoListViewController
+        let navigaionController = UINavigationController(rootViewController: viewController)
+        navigaionController.modalPresentationStyle = .fullScreen
+        self.present(navigaionController, animated: true, completion: nil)
+        
     }
     
     private func presentAlert() {

@@ -70,7 +70,7 @@
         <!--To Do List View Controller-->
         <scene sceneID="bfQ-Bh-05a">
             <objects>
-                <viewController storyboardIdentifier="toDoList" id="wdi-Jx-7hS" customClass="ToDoListViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ToDoList" id="wdi-Jx-7hS" customClass="ToDoListViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="58w-8b-Xx2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="89" id="IcL-xt-hPg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoListTableViewCell" rowHeight="89" id="IcL-xt-hPg" customClass="ToDoListTableViewCell" customModule="TODOList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IcL-xt-hPg" id="0Tn-0w-j1A">
@@ -117,8 +117,17 @@
                                                 <constraint firstItem="MQZ-BD-524" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="heC-Ht-Bbl" secondAttribute="trailing" constant="15" id="pv1-fi-3P6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkImageView" destination="Pjr-mb-4fC" id="QpU-4W-Wln"/>
+                                            <outlet property="summaryLabel" destination="MQZ-BD-524" id="8eA-Lf-Gea"/>
+                                            <outlet property="titleLabel" destination="heC-Ht-Bbl" id="v5J-un-6wz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wdi-Jx-7hS" id="w6x-93-qwr"/>
+                                    <outlet property="delegate" destination="wdi-Jx-7hS" id="kRZ-FU-p0N"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="idV-kd-Lnx"/>
@@ -137,15 +146,19 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="V08-hF-lfg" id="42o-oy-iAB"/>
+                        <outlet property="tableView" destination="HKA-LK-4gj" id="psQ-uv-Bsy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDL-oS-y5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2038" y="88"/>
         </scene>
-        <!--View Controller-->
+        <!--Add List View Controller-->
         <scene sceneID="DFk-T9-ASC">
             <objects>
-                <viewController id="QhP-ei-Aki" sceneMemberID="viewController">
+                <viewController id="QhP-ei-Aki" customClass="AddListViewController" customModule="TODOList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DMC-r7-SFg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
