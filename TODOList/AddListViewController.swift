@@ -8,22 +8,30 @@
 import UIKit
 
 class AddListViewController: UIViewController {
-
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var summaryTextField: UITextField!
+    
+    var didAddHandler: ((TodoList)->Void)?
+    
+    @IBAction func doneButtonClicked(_ sender: UIBarButtonItem) {
+        let title = titleTextField.text!
+        let summary = summaryTextField.text ?? ""
+        
+        let item: TodoList = TodoList(title: title, summary: summary)
+        
+        print("Add List title : \(item.title)")
+        // TodoListViewController에 생성한 전역변수에 append
+        list.append(item)
+        
+        // Done 버튼 클릭 시 새로운 TodoList 객체 생성
+        // 생성한 객체에 입력한 정보 저장
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ToDoListViewController: UIViewController,UITableViewDelegate  {
-    
-    var list:[TodoList] = []
+var list = [TodoList]()
+
+class ToDoListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -77,10 +77,29 @@ extension ToDoListViewController: UITableViewDataSource {
         cell.titleLabel?.text = list[indexPath.row].title
         cell.summaryLabel?.text = list[indexPath.row].summary
         if list[indexPath.row].isComplete {
-            cell.checkImageView?.isHidden = true
-        }else{
             cell.checkImageView?.isHidden = false
+        }else{
+            cell.checkImageView?.isHidden = true
         }
         return cell
+    }
+}
+
+extension ToDoListViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        guard list.count > indexPath.row else { return }
+        var lists = list[indexPath.row]
+        lists.isComplete.toggle()
+        list[indexPath.row] = lists
+        tableView.reloadData()
+        return
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        list.remove(at: indexPath.row)
+        tableView.reloadData()
     }
 }
