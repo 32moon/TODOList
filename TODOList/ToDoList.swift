@@ -7,6 +7,7 @@
 
 import Foundation
 
+// ToDoList 데이터 모델 작성
 struct TodoList {
     var title: String = ""
     var summary: String?

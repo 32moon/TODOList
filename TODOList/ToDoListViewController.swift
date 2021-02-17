@@ -7,6 +7,7 @@
 
 import UIKit
 
+// AddListViewContoller에서도 접근 할 수 있도록 전역 변수로 빼줌.
 var list = [TodoList]()
 
 class ToDoListViewController: UIViewController {
@@ -16,7 +17,6 @@ class ToDoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadAllData()
         print(list.description)
     }
@@ -67,10 +67,11 @@ class ToDoListViewController: UIViewController {
 }
 
 extension ToDoListViewController: UITableViewDataSource {
+    // 생성되는 데이터의 갯수가 셀의 수가 된다.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
-    
+    // 셀 세팅
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoListTableViewCell") as? ToDoListTableViewCell else { fatalError("ToDoListTableViewCell did not configured")
         }
@@ -86,6 +87,7 @@ extension ToDoListViewController: UITableViewDataSource {
 }
 
 extension ToDoListViewController: UITableViewDelegate {
+    // 셀 터치시 셀 이미지 뷰의 변화
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
@@ -97,7 +99,7 @@ extension ToDoListViewController: UITableViewDelegate {
         tableView.reloadData()
         return
     }
-    
+    // 셀 삭제 기능
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         list.remove(at: indexPath.row)
         tableView.reloadData()

@@ -8,9 +8,9 @@
 import UIKit
 
 class ToDoListTableViewCell: UITableViewCell {
-    @IBOutlet private weak var titleLabel: UILabel?
-    @IBOutlet private weak var summaryLabel: UILabel?
-    @IBOutlet private weak var checkImageView: UIImageView?
+    @IBOutlet weak var titleLabel: UILabel?
+    @IBOutlet weak var summaryLabel: UILabel?
+    @IBOutlet weak var checkImageView: UIImageView?
    
 //    func configure(with list: TodoList) {
 //      titleLabel?.text = list.title
